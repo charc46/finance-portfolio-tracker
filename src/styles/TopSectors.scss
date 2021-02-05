@@ -1,0 +1,13 @@
+@import 'colours';
+
+.top-sectors {
+  display: flex;
+  flex-direction: column;
+
+  .sector {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    border-bottom: 1px solid $orange;
+  }
+}

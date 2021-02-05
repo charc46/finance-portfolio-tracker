@@ -1,0 +1,13 @@
+@import 'colours';
+
+.top-markets {
+  display: flex;
+  flex-direction: column;
+
+  .market {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    border-bottom: 1px solid $orange;
+  }
+}

@@ -1,0 +1,16 @@
+@import 'colours';
+
+.news-snippet {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 1px solid $orange;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.company-news-snippet {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+}
