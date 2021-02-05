@@ -8,7 +8,7 @@ const Nav = () => {
       <a href="#" className="item">Holdings</a>
       <div className='right menu'>
         <a href="#" className="item">Account</a>
-        <div className="ui input">
+        <div className="ui input nav-search">
           <form className='ui form'>
             <input type="text" placeholder='Search..' />
           </form>
