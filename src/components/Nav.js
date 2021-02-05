@@ -8,7 +8,11 @@ const Nav = () => {
       <a href="#" className="item">Holdings</a>
       <div className='right menu'>
         <a href="#" className="item">Account</a>
-        <a href="#" className="item">Search Bar</a>
+        <div className="ui input">
+          <form className='ui form'>
+            <input type="text" placeholder='Search..' />
+          </form>
+        </div>
       </div>
     </div>
   )
