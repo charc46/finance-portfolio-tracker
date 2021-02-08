@@ -1,21 +1,21 @@
-import React , { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/StockRow.scss';
 
 const StockRow = ({ symbol }) => {
   const [stock, setStock] = useState({});
 
-  const url = `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?`;
-  const searchIEX = async () => {
-    const { data } = await axios.get(url, {
-      params: {
-        token: 'Tpk_08b5a20b77b74bce8c14e491f5bc75f1' 
-      }
-    })
-    setStock(data);
-  };
-
   useEffect(() => {
+    const url = `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?`;
+    const searchIEX = async () => {
+      const { data } = await axios.get(url, {
+        params: {
+          token: 'Tpk_08b5a20b77b74bce8c14e491f5bc75f1' 
+        }
+      })
+      setStock(data);
+    };
+
     searchIEX();
   }, []);
 
