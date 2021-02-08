@@ -5,10 +5,10 @@ const TopHoldings = () => {
   return (
     <div className='ui segment top-holdings'>
       <h1>Top Holdings</h1>
-      <StockRow name='Apple' />
-      <StockRow name='Alphabet' />
-      <StockRow name='Tesla' />
-      <StockRow name='AT&T' />
+      <StockRow symbol='AAPL' />
+      <StockRow symbol='GOOG' />
+      <StockRow symbol='TSLA' />
+      <StockRow symbol='AAPL' />
     </div>
   )
 }

@@ -15,14 +15,14 @@
 .stock-col-1 {
   display: flex;
   align-items: center;
-  max-width: 100px;
+  width: 150px;
   flex-wrap: wrap;
 
   .stock-name {
     margin: 0;
     margin-right: 10px;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 18px;
   }
 
   p:last-child {

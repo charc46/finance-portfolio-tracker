@@ -1,15 +1,32 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/StockRow.scss';
 
-const StockRow = ({ name }) => {
+const StockRow = ({ symbol }) => {
+  const [stock, setStock] = useState({});
+
+  const url = `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?`;
+  const searchIEX = async () => {
+    const { data } = await axios.get(url, {
+      params: {
+        token: 'Tpk_08b5a20b77b74bce8c14e491f5bc75f1' 
+      }
+    })
+    setStock(data);
+  };
+
+  useEffect(() => {
+    searchIEX();
+  }, []);
+
   return (
     <div className='stock-row'>
       <div className='stock-col-1'>
-        <p className='stock-name'>{name}</p>
-        <p>AAPL</p>
+        <p className='stock-name'>{stock.companyName}</p>
+        <p>{stock.symbol}</p>
       </div>
       <div className='stock-col-2'>
-        <p>Price: £2,000</p>
+        <p>Price: {stock.latestPrice}</p>
       </div>
       <div className='stock-col-3'>
         <p>Units: 12</p>
