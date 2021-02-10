@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles/index.scss';
 import Nav from './components/Nav';
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/Dashboard';
+import StockPage from './components/StockPage';
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <div className="site-container">
         <Nav />
         <Dashboard />
+        {/* <StockPage symbol='AAPL' /> */}
       </div>
     </div>
   )

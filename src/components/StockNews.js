@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import NewsSnippet from './NewsSnippet';
 
-const DashboardNews = () => {
+const StockNews = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
@@ -33,11 +33,11 @@ const DashboardNews = () => {
   })
 
   return (
-    <div className='ui segment dashboard-news'>
+    <div className='ui segment news-container'>
       <h1 style={{marginTop: '0'}}>News</h1>
       {renderedNews}
     </div>
   )
 }
 
-export default DashboardNews
+export default StockNews

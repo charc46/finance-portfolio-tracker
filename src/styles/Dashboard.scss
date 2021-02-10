@@ -1,5 +1,5 @@
 @import 'colours';
-@import './DashboardNews.scss';
+@import './StockNews.scss';
 @import './TopSectors.scss';
 @import './TopMarkets.scss';
 @import './DashboardChart.scss';
@@ -10,7 +10,7 @@
   grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
 
   @media(min-width: 1400px) {
-    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-columns: 2fr 2fr 2fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
     height: 90vh;
@@ -30,6 +30,9 @@
 
     .dashboard-chart {
       width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }
@@ -59,14 +62,6 @@
     display: inline-block;
     grid-column: 3/4;
     grid-row: 4/5;
-  }
-}
-
-.dashboard-news {
-  grid-row: 3/4;
-  @media(min-width: 1400px) {
-    grid-column: 4/5;
-    grid-row: 1/5;
   }
 }
 

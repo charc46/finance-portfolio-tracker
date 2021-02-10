@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import StockRow from './StockRow'
 
 const TopHoldings = () => {
@@ -7,14 +8,19 @@ const TopHoldings = () => {
   useEffect(() => {
     const getTopHoldings = () => {
       // Call rails API for top holdings
-      return ['AAPL', 'TSLA', 'GOOG', 'GME'];
+      const url = 'http://localhost:3001/stocks'
+      const getStocks = async () => {
+        const { data } = await axios.get(url)
+        setTopHoldings(data.slice(0, 5))
+      }
+      getStocks();
     }
-    setTopHoldings(getTopHoldings);
+    getTopHoldings()
     }, [])
 
   const renderedTopHoldings = topHoldings.map((holding) => {
     return (
-      <StockRow key={holding} symbol={holding} />
+      <StockRow key={holding.ticker} id={holding.id} />
     )
   })
 

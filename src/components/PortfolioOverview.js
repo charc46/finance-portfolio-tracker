@@ -12,6 +12,7 @@ const PortfolioOverview = () => {
         </div>
       </div>
       <div className='dashboard-chart'>
+        <h3 className='ui header'>Graphical Representation of Portfolio Performance</h3>
         <Chart />
       </div>
     </div>
