@@ -8,3 +8,12 @@ export const fetchTopHoldings = () => {
     dispatch({ type: 'FETCH_TOP_HOLDINGS', payload: response.data.topHoldings })
   }
 }
+
+export const fetchHoldings = () => {
+  return async (dispatch) => {
+    const url = 'http://localhost:3001/api/v1/users/holdings'
+    const response = await axios.get(url)
+
+    dispatch({ type: 'FETCH_HOLDINGS', payload: response.data.holdings })
+  }
+}

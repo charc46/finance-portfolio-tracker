@@ -7,16 +7,14 @@ import StockRow from '../../StockRow'
 const TopHoldings = (props) => {
   useEffect(() => {
     props.fetchTopHoldings();
-    console.log(props.topHoldings);
   }, [])
   
   
   const renderedTopHoldings = () => {
     const topHoldings = props.topHoldings.slice(0, 3);
-    console.log(topHoldings);
     return topHoldings.slice(0, 3).map((holding) => {
       return (
-        <StockRow key={holding.ticker} ticker={holding.ticker} units={holding.units} />
+        <StockRow key={holding.id} ticker={holding.ticker} units={holding.units} />
       )
     })
   } 

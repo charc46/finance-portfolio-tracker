@@ -19,7 +19,7 @@ const StockRow = ({ ticker, units }) => {
   }, []);
 
   return (
-    <div className='stock-row'>
+    <div className='stock-row item'>
       <div className='stock-col-1'>
         <p className='stock-name'>{stock.companyName}</p>
         <p>{stock.symbol}</p>
