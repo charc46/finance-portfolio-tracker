@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
-import './styles/index.scss';
-import Nav from './components/Nav';
-import Dashboard from './components/Dashboard';
-import StockPage from './components/StockPage';
-import Holdings from './components/Holdings';
+import '../styles/index.scss';
+import Nav from './Nav';
+import Dashboard from './pages/Dashboard/Dashboard';
+import StockPage from './pages/Stock/StockPage';
+import Holdings from './pages/Holdings/Holdings';
 
 const App = () => {
   return (

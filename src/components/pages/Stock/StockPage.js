@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import CompanyInformation from './CompanyInformation'
 import CompanyDetails from './CompanyDetails'
-import UpdateHoldings from './UpdateHoldings'
+import UpdateHoldings from '../Holdings/UpdateHoldings'
 import StockNews from './StockNews'
 
 const StockPage = ({symbol}) => {

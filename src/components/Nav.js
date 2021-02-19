@@ -1,13 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
     <div className="ui pointing secondary menu">
-      <a href="#" className="item active-nav">Dashboard</a>
-      <a href="#" className="item">News</a>
-      <a href="#" className="item">Holdings</a>
+      <Link to='/' className='item'>Dashboard</Link>
+      <Link to='/holdings' className='item'>Holdings</Link>
       <div className='right menu'>
-        <a href="#" className="item">Account</a>
+        <Link to='/' className='item'>Account</Link> 
         <div className="ui input nav-search">
           <form className='ui form'>
             <input type="text" placeholder='Search..' />
