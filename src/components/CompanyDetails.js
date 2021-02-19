@@ -19,7 +19,8 @@ const CompanyDetails = ({symbol}) => {
   }, [])
 
   return (
-    <div>
+    <div className='ui segment'>
+      <h2>Company Information for {company.companyName}</h2>
       <p>Industry: {company.industry}</p>
       <p>Description: {company.description}</p>
       <p>CEO: {company.CEO}</p>

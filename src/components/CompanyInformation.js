@@ -2,14 +2,12 @@ import React from 'react'
 import CompanyDetails from './CompanyDetails'
 
 const CompanyInformation = (props) => {
+  const symbol = props.symbol
+
   return (
     <div className='ui segment'>
-      <h1>{props.companyName}</h1>
-      <div className='company-details'>
-        <CompanyDetails symbol={props.symbol} />
-      </div>
-      <br />
       <div className='financials'>
+        <h2>Financial Information for {props.companyName}</h2>
         <p>Ticker: {props.symbol}</p>
         <p>Price: {props.price}</p>
         <p>Market Cap: {props.marketCap}</p>

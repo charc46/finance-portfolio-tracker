@@ -2,35 +2,37 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/StockRow.scss';
 
-const StockRow = ({ id }) => {
+const StockRow = ({ ticker, units }) => {
   const [stock, setStock] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:3001/stocks/${id}`;
-    const searchAPI = async () => {
-      const { data } = await axios.get(url)
+    const iexUrl = `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?`;
+    const getStockInfo = async () => {
+      const { data } = await axios.get(iexUrl, {
+        params: {
+          token: 'Tpk_08b5a20b77b74bce8c14e491f5bc75f1'
+        }
+      })
       setStock(data);
-      // console.log(data);
-    };
-
-    searchAPI();
+    }
+    getStockInfo();
   }, []);
 
   return (
     <div className='stock-row'>
       <div className='stock-col-1'>
-        <p className='stock-name'>{stock.name}</p>
-        <p>{stock.ticker}</p>
+        <p className='stock-name'>{stock.companyName}</p>
+        <p>{stock.symbol}</p>
       </div>
       <div className='stock-col-2'>
-        <p>Price: {stock.price}</p>
+        <p>Price: {stock.latestPrice}</p>
       </div>
       <div className='stock-col-3'>
-        <p>Units: 12</p>
+        <p>Units: {units}</p>
         <p>Cost: £3,074</p>
       </div>
       <div className='stock-col-4'>
-        <p>Value: £3,874</p>
+        <p>Value: {units * stock.latestPrice}</p>
         <p>+£806</p>
       </div>
       <div className='stock-col-5'>
