@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/StockRow.scss';
 
-const StockRow = ({ ticker, units }) => {
+const StockRow = ({ ticker, units, cost }) => {
   const [stock, setStock] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const iexUrl = `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?`;
@@ -14,9 +15,14 @@ const StockRow = ({ ticker, units }) => {
         }
       })
       setStock(data);
+      setIsLoading(false);
     }
     getStockInfo();
   }, []);
+
+  if(isLoading) {
+    return <div>Loading</div>
+  }
 
   return (
     <div className='stock-row item'>
@@ -25,14 +31,14 @@ const StockRow = ({ ticker, units }) => {
         <p>{stock.symbol}</p>
       </div>
       <div className='stock-col-2'>
-        <p>Price: {stock.latestPrice}</p>
+        <p>Price: {stock.latestPrice.toFixed(2)}</p>
       </div>
       <div className='stock-col-3'>
         <p>Units: {units}</p>
-        <p>Cost: £3,074</p>
+        <p>Cost: {cost}</p>
       </div>
       <div className='stock-col-4'>
-        <p>Value: {units * stock.latestPrice}</p>
+        <p>Value: {(units * stock.latestPrice).toFixed(2)}</p>
         <p>+£806</p>
       </div>
       <div className='stock-col-5'>
