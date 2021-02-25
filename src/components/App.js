@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { checkLoginStatus } from '../actions'
+import { checkLoginStatus, fetchHoldings } from '../actions'
 
 import '../styles/index.scss';
 import Nav from './Nav';
@@ -14,27 +14,31 @@ const App = (props) => {
   // Call API on mount to check for logged in user
   useEffect(() => {
     props.checkLoginStatus()
-    console.log(props);
   }, [])
 
-  const user = props.user
+  useEffect(() => {
+    if (props.user.loggedInStatus) {
+      props.fetchHoldings()
+      console.log(props.allHoldings);
+    }
+  }, [props.user])
 
   return (
     <div>
       <div className='ui container'>
         <BrowserRouter>
-          <Nav user={user} loggedIn={props.loggedInStatus} />
-          <Switch>
-            {props.loggedInStatus 
-              ?
-              <Route path='/' exact component={Dashboard} />
-              :
-              <Route path='/' exact component={Login} />
-            }
-            <Route path='/dashboard' exact component={Dashboard} /> 
-            <Route path='/holdings' exact component={Holdings} />
-            <Route path='/stock' exact component={StockPage} />
-          </Switch>
+          <Nav user={props.user} loggedIn={props.loggedInStatus} />
+          {props.loggedInStatus 
+            ?
+            <Route path='/' exact component={Dashboard} />
+            :
+            <Route path='/' exact component={Login} />
+          }
+          <Route path='/dashboard' exact component={Dashboard} /> 
+          <Route path='/holdings' exact render={
+            props => (<Holdings {...props} holdings={props.allHoldings} />)} 
+          />
+          <Route path='/stock' exact component={StockPage} />
         </BrowserRouter>
       </div>
     </div>
@@ -42,7 +46,11 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.currentUser, loggedInStatus: state.currentUser.loggedInStatus }
+  return { 
+    user: state.currentUser, 
+    loggedInStatus: state.currentUser.loggedInStatus, 
+    allHoldings: state.allHoldings 
+  }
 }
 
-export default connect(mapStateToProps, { checkLoginStatus })(App)
+export default connect(mapStateToProps, { checkLoginStatus, fetchHoldings })(App)

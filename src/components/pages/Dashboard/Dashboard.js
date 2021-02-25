@@ -2,9 +2,6 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import PortfolioOverview from './PortfolioOverview'
-import TopHoldings from './TopHoldings';
-import TopSectors from './TopSectors';
-import TopMarkets from './TopMarkets';
 import { checkLoginStatus } from '../../../actions';
 
 const Dashboard = (props) => {
