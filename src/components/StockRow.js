@@ -35,14 +35,14 @@ const StockRow = ({ ticker, units, cost }) => {
       </div>
       <div className='stock-col-3'>
         <p>Units: {units}</p>
-        <p>Cost: {cost}</p>
+        <p>Cost: {cost.toFixed(2)}</p>
       </div>
       <div className='stock-col-4'>
         <p>Value: {(units * stock.latestPrice).toFixed(2)}</p>
-        <p>+£806</p>
+        <p>£{((units * stock.latestPrice) - cost).toFixed(2)}</p>
       </div>
       <div className='stock-col-5'>
-        <p>+18%</p>
+        <p>{((units * stock.latestPrice) / cost).toFixed(2) / 100}%</p>
       </div>
     </div>
   )

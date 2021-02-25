@@ -11,10 +11,10 @@ const TopHoldings = (props) => {
   
   
   const renderedTopHoldings = () => {
-    const topHoldings = props.topHoldings.slice(0, 3);
-    return topHoldings.slice(0, 3).map((holding) => {
+    const topHoldings = props.topHoldings;
+    return topHoldings.map((holding) => {
       return (
-        <StockRow key={holding.id} ticker={holding.ticker} units={holding.units} />
+        <StockRow key={holding[0]} ticker={holding[0][0]} units={holding[1].units} cost={holding[1].price}/>
       )
     })
   } 

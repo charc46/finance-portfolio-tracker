@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import topHoldingsReducer from './topHoldingsReducer'
+import sessionReducer from './sessionReducer'
 import holdingsReducer from './holdingsReducer'
-import groupedHoldingsReducer from './groupedHoldingsReducer'
 
 export default combineReducers({
-  topHoldings: topHoldingsReducer,
-  holdings: holdingsReducer,
-  groupedHoldings: groupedHoldingsReducer
+  allHoldings: holdingsReducer,
+  currentUser: sessionReducer
 })

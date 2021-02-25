@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+
 import PortfolioOverview from './PortfolioOverview'
 import TopHoldings from './TopHoldings';
 import TopSectors from './TopSectors';
 import TopMarkets from './TopMarkets';
+import { checkLoginStatus } from '../../../actions';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  useEffect(() => {
+    props.checkLoginStatus()
+  }, [])
+
   return (
     <div className='dashboard-content'>
       <PortfolioOverview />
-      <TopHoldings />
+      {/* <TopHoldings />
       <TopSectors />
-      <TopMarkets />
+      <TopMarkets /> */}
       <a href="https://iexcloud.io">Data provided by IEX Cloud</a>
     </div>
   )
 }
 
-export default Dashboard
+const mapStateToProps = state => {
+  return { user: state.user, loggedInStatus: state.logged_in}
+}
+
+export default connect(mapStateToProps, { checkLoginStatus })(Dashboard)
