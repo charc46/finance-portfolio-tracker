@@ -21,29 +21,24 @@ const StockPage = (props) => {
   // Return the id of the stock to then retrieve user holdings for the stock and pass it to the 
   // UpdateHoldings component as a prop
   // const stockId = stockHoldings[0].stock_id;
-  console.log(props);
   const stock = props.stockData
   
-  if(props.holdings.length > 0) {
-    return (
-      <div>
-        <h1>{props.ticker}</h1>
-        <h1>{stock.companyName}</h1>
-        <CompanyDetails symbol={stock.symbol} />
-        <CompanyInformation 
-          companyName={stock.companyName}
-          symbol={stock.symbol}
-          price={stock.latestPrice}
-          marketCap={stock.marketCap}
-          pe={stock.peRatio}
-        />
-        <UpdateHoldings stock={stock} holdings={props.holdings} ticker={props.ticker} />
-        {/* <StockNews /> */}
-      </div>
-    )
-  }
-
-  return <h1>Loading {props.ticker}</h1>
+  return (
+    <div>
+      <h1>{props.ticker}</h1>
+      <h1>{stock.companyName}</h1>
+      <CompanyDetails symbol={stock.symbol} />
+      <CompanyInformation 
+        companyName={stock.companyName}
+        symbol={stock.symbol}
+        price={stock.latestPrice}
+        marketCap={stock.marketCap}
+        pe={stock.peRatio}
+      />
+      <UpdateHoldings stock={stock} holdings={props.holdings} ticker={props.ticker} />
+      {/* <StockNews /> */}
+    </div>
+  )
 }
 
 const mapStateToProps = (state, ownProps) => {

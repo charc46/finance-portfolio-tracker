@@ -2,6 +2,22 @@ import axios from 'axios'
 
 // Actions for holdings logic
 
+export const addHolding = (name, ticker, price, units, date) => {
+  return async (dispatch) => {
+    const res = axios.post('http://localhost:5000/holdings', {
+        holding: {
+          name,
+          ticker,
+          price,
+          units,
+          date
+        }
+    }, { withCredentials: true })
+
+    dispatch({ type: 'ADD_HOLDING', payload: res.data})
+  }
+}
+
 export const fetchHoldings = () => {
   return async (dispatch) => {
     const url = 'http://localhost:5000/holdings'
