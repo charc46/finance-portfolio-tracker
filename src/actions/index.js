@@ -27,7 +27,7 @@ export const fetchStockHoldings = (ticker) => {
   return async (dispatch) => {
     const res = await axios.get(`http://localhost:5000/stock/${ticker}`, { withCredentials: true })
 
-    dispatch({ type: 'FETCH_STOCK_HOLDINGS', payload: res.data.stockHoldings})
+    dispatch({ type: 'FETCH_STOCK_HOLDINGS', payload: res.data})
   }
 }
 

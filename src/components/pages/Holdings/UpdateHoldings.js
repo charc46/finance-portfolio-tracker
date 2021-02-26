@@ -1,29 +1,31 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-const UpdateHoldings = ({stock, stockId}) => {
-  useEffect(() => {
-    // Calling rails API for all users holdings which match the stockId passed in with props,
-    // this returns an object with holding information including date, price, stock ticker, 
-    // stock id from API 
-    const url = `http://localhost:5000/holdings/${stockId}`;
-    const getHolding = async () => {
-      const { data } = await axios.get(url)
-      // setUnits(data.holdings_total);
-      // setCost(data.holdings_cost);
-    }
-    getHolding();
-  }, [])
+const UpdateHoldings = (props) => {
+
+  const handleUpdateHoldings = () => {
+    // If user clicks on add holdings, update stock holding with amount added and current data from IEX
+
+    // If user clicks on remove holdings, update stock holding with amount added and current data from IEX
+  }
 
   return (
     <div className='ui segment'>
-      <h2>Update Holdings for {stock.companyName}</h2>
+      <h2>Update Holdings for {props.stock.companyName}</h2>
       <div className='current-holdings'>
-        {/* <h3>Current holdings: {units}</h3>
-        <h3>Current holdings cost: {cost}</h3> */}
+        <h3>Current holdings: {props.totalUnits} </h3>
+        <h3>Current holdings cost: {props.totalCost} </h3>
       </div>
     </div>
   )
 }
 
-export default UpdateHoldings
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    totalUnits: state.holdingsData.stockHoldings.totalUnits,
+    totalCost: state.holdingsData.stockHoldings.totalCost
+  }
+}
+
+export default connect(mapStateToProps)(UpdateHoldings)

@@ -37,8 +37,8 @@ const StockPage = (props) => {
           marketCap={stock.marketCap}
           pe={stock.peRatio}
         />
-        {/* <UpdateHoldings stock={props.stock} holdings={props.holdings} ticker={props.ticker} />
-        <StockNews /> */}
+        <UpdateHoldings stock={stock} holdings={props.holdings} ticker={props.ticker} />
+        {/* <StockNews /> */}
       </div>
     )
   }
@@ -47,9 +47,8 @@ const StockPage = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return { 
-    holdings: state.holdingsData.stockHoldings, 
+    holdings: state.holdingsData.stockHoldings.stockHoldings, 
     stockData: state.holdingsData.iexData, 
     ticker: ownProps.match.params.ticker 
   }
