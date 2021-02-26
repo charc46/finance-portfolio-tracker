@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import '../styles/StockRow.scss';
 
@@ -27,7 +28,7 @@ const StockRow = ({ ticker, units, cost }) => {
   return (
     <div className='stock-row item'>
       <div className='stock-col-1'>
-        <p className='stock-name'>{stock.companyName}</p>
+      <Link to={`/stock/${stock.symbol}`}><p className='stock-name'>{stock.companyName}</p></Link>
         <p>{stock.symbol}</p>
       </div>
       <div className='stock-col-2'>

@@ -3,6 +3,6 @@ import sessionReducer from './sessionReducer'
 import holdingsReducer from './holdingsReducer'
 
 export default combineReducers({
-  allHoldings: holdingsReducer,
+  holdingsData: holdingsReducer,
   currentUser: sessionReducer
 })

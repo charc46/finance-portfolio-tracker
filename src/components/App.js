@@ -19,10 +19,10 @@ const App = (props) => {
   useEffect(() => {
     if (props.user.loggedInStatus) {
       props.fetchHoldings()
-      console.log(props.allHoldings);
     }
   }, [props.user])
 
+  console.log(props.allHoldings);
   return (
     <div>
       <div className='ui container'>
@@ -35,10 +35,11 @@ const App = (props) => {
             <Route path='/' exact component={Login} />
           }
           <Route path='/dashboard' exact component={Dashboard} /> 
-          <Route path='/holdings' exact render={
-            props => (<Holdings {...props} holdings={props.allHoldings} />)} 
-          />
-          <Route path='/stock' exact component={StockPage} />
+          <Route path='/holdings' exact component={Holdings} /> 
+          {/* <Route path='/holdings' exact render={
+            props => (<Holdings {...props} />)} 
+          /> */}
+          <Route path='/stock/:ticker' component={StockPage} />
         </BrowserRouter>
       </div>
     </div>
@@ -49,7 +50,7 @@ const mapStateToProps = (state) => {
   return { 
     user: state.currentUser, 
     loggedInStatus: state.currentUser.loggedInStatus, 
-    allHoldings: state.allHoldings 
+    allHoldings: state.holdingsData.allHoldings 
   }
 }
 

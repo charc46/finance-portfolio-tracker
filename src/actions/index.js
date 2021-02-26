@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+// Actions for holdings logic
+
 export const fetchHoldings = () => {
   return async (dispatch) => {
     const url = 'http://localhost:5000/holdings'
@@ -8,6 +10,28 @@ export const fetchHoldings = () => {
     dispatch({ type: 'FETCH_HOLDINGS', payload: response.data.allHoldings })
   }
 }
+
+export const fetchIexStockData = ticker => {
+  return async (dispatch) => {
+    const res = await axios.get(`https://sandbox.iexapis.com/stable/stock/${ticker}/quote?`, {
+      params: {
+        token: 'Tpk_08b5a20b77b74bce8c14e491f5bc75f1'
+      }
+    })
+
+    dispatch({ type: 'FETCH_IEX_STOCK_DATA', payload: res.data })
+  }
+}
+
+export const fetchStockHoldings = (ticker) => {
+  return async (dispatch) => {
+    const res = await axios.get(`http://localhost:5000/stock/${ticker}`, { withCredentials: true })
+
+    dispatch({ type: 'FETCH_STOCK_HOLDINGS', payload: res.data.stockHoldings})
+  }
+}
+
+// Actions for session/user
 
 export const checkLoginStatus = () => {
   return async (dispatch) => {

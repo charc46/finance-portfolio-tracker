@@ -4,23 +4,27 @@ import { connect } from 'react-redux'
 import StockRow from '../../StockRow'
 
 const Holdings = (props) => {
-  
-  const holding = props.allHoldings.holdings[0];
+  console.log(props);
+  const holding = props.holdings[0];
 
-  return (
-    <div className='ui relaxed divided list'>
-      <h1>Your Holdings</h1>
-      {/* {renderList()} */}
-      <StockRow key={holding.id} ticker={holding.ticker} units={holding.units} cost={holding.price} />
-    </div>
-  )
+  if(props.holdings) {
+    return (
+      <div className='ui relaxed divided list'>
+        <h1>Your Holdings</h1>
+        {/* {renderList()} */}
+        <StockRow key={holding.id} ticker={holding.ticker} units={holding.units} cost={holding.price} />
+      </div>
+    )
+  }
+  return <h1>Loading</h1>
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return { 
-    allHoldings: state.allHoldings,
-    user: state.user
+    holdings: state.holdingsData.allHoldings,
+    user: state.currentUser.user
   }
 }
 
-export default connect(mapStateToProps, { fetchHoldings })(Holdings)
+export default connect(mapStateToProps)(Holdings)
